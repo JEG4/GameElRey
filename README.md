@@ -2,4 +2,4 @@
 
 Software Engineering Tactical Research Institute.
 
-Researching software engineering.
+Researching software engineering tactics and strategies
