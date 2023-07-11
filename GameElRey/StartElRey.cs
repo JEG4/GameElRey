@@ -15,7 +15,7 @@ namespace GameElRey
         static void Main()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("Game El Rey ");
+            Console.WriteLine("Tactics El Rey ");
             Console.ForegroundColor = ConsoleColor.Gray;
 
             // WorkForce wf = new WorkForce();
