@@ -16,9 +16,9 @@ namespace GameElRey
         public string UnitType { get; set; }
         public Statistic Stats { get; set; }
         public Equipment Equip { get; set; }
-        public KingdomLibrary UnitDefenseAbilities { get; set; }
+        public AbilityLibrary UnitDefenseAbilities { get; set; }
 
-        public KingdomLibrary UnitAttackAbilities { get; set; }
+        public AbilityLibrary UnitAttackAbilities { get; set; }
         public Condition UnitCondition { get; set; }
         
             
@@ -28,8 +28,8 @@ namespace GameElRey
              string type,
              Statistic stats,
              Equipment equip,
-             KingdomLibrary DefenseAbilities, 
-             KingdomLibrary AttackAbilities, 
+             AbilityLibrary DefenseAbilities, 
+             AbilityLibrary AttackAbilities, 
              Condition condition)
         {
 
@@ -68,8 +68,8 @@ namespace GameElRey
                 new Equipment(
                     "SWORD", 
                     new Statistic()),
-                Ability.GenerateDefenseAbility(),
-                Ability.GenerateAttackAbility(),
+                AbilityLibrary.GenerateDefenseAbility(),
+                AbilityLibrary.GenerateAttackAbility(),
                 new Condition(new List<string>())
                 );
 
@@ -86,7 +86,7 @@ namespace GameElRey
 
             Unit EnemyUnit = new Unit("NON-ELEMENTAL","NPC","ENEMY" + number, "MONSTER",
                 Statistic.UnitPresetStatistic(),
-                new Equipment("SWORD", new Statistic()), Ability.GenerateAttackAbility(), Ability.GenerateDefenseAbility(), new Condition(new List<string>()));
+                new Equipment("SWORD", new Statistic()), AbilityLibrary.GenerateAttackAbility(), AbilityLibrary.GenerateDefenseAbility(), new Condition(new List<string>()));
 
             Console.WriteLine(EnemyUnit.UnitName + "  Has been created.");
 
