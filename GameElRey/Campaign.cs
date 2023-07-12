@@ -24,7 +24,6 @@ namespace GameElRey
 
         public static Unit SelectUnitForCampaign(Kingdom k1)
         {
-
             int size = k1.KingdomArmy.ArmyContent.Count;
 
             for(int i = 0; i < size; i++)
