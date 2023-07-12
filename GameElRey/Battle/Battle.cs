@@ -9,16 +9,7 @@ namespace TacticsElRey.Battle
 {
     public class Battle
     {
-        public Unit BattleUnitAttacker { get; set; }
-        public Unit BattleUnitDefender { get; set; }
-
-        public Battle(Unit unit1, Unit unit2) // will create a fight class
-        {
-
-            BattleUnitAttacker = unit1;
-            BattleUnitDefender = unit2;
-        }
-        
+       
 
         public static Kingdom BattlePrompt(Kingdom k1)
         {
@@ -30,9 +21,8 @@ namespace TacticsElRey.Battle
         public static Unit FightSequence(Unit unit1, Unit unit2)
         {
             Console.WriteLine();
-            Console.WriteLine();
-            Battle BattleUnits = new Battle(unit1, unit2);
-            Fight FightingUnits = new Fight(BattleUnits.BattleUnitAttacker, BattleUnits.BattleUnitDefender, 0);
+            Console.WriteLine(".FIGHT SEQUENCE.");
+            Fight FightingUnits = new Fight(unit1, unit2, 0);
             Unit attacker = FightingUnits.FightUnitAttacker;
             Unit defender = FightingUnits.FightUnitDefender;
 
@@ -57,7 +47,7 @@ namespace TacticsElRey.Battle
                     //.AttackTurn(FightingUnits);
                 Display.FightDisplay(UpdatedFightingUnits.FightUnitAttacker, UpdatedFightingUnits.FightUnitDefender);
                 Display.FightDisplay(UpdatedFightingUnits.FightUnitDefender);// whats this do?
-                UpdatedFightingUnits.FightUnitDefender.Stats.Hp.CurrentHitpoints = UpdatedFightingUnits.FightUnitAttacker.Stats.Hp.CurrentHitpoints - UpdatedFightingUnits.FightUnitDamageDone;
+                UpdatedFightingUnits.FightUnitDefender.Stats.Hp.CurrentHitpoints = UpdatedFightingUnits.FightUnitDefender.Stats.Hp.CurrentHitpoints - UpdatedFightingUnits.FightUnitDamageDone;
                 Display.FightDisplay(UpdatedFightingUnits.FightUnitDamageDone);
                 // switch sides
                 return FightSequence(UpdatedFightingUnits.FightUnitDefender, UpdatedFightingUnits.FightUnitAttacker);// defender turns into attacker

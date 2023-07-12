@@ -12,9 +12,7 @@ namespace TacticsElRey.Battle
         public Unit FightUnitAttacker { get; set; }
         public Unit FightUnitDefender { get; set; }
         public int FightUnitDamageDone { get; set; }
-        public Fight(Unit unit1, Unit unit2, int damage) : base(unit1, unit2)
-        {
-
+        public Fight(Unit unit1, Unit unit2, int damage){
             FightUnitAttacker = unit1;
             FightUnitDefender = unit2;
             FightUnitDamageDone = damage;
@@ -24,15 +22,11 @@ namespace TacticsElRey.Battle
         {
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("New Attack Turn Function inside fight class");
-
             // later: swords is base of attack
             Unit attacker = FightingUnits.FightUnitAttacker;
             Unit defender = FightingUnits.FightUnitDefender;
-
-            Console.WriteLine("NEW Attack turn function");
-            FightingUnits.FightUnitDamageDone = HitpointCalculator(AttackCalculator(attacker.Stats),
-                DefenseCalculator(defender.Stats));
+            FightingUnits.FightUnitDamageDone = HitpointCalculator(AttackCalculator(attacker),
+                DefenseCalculator(defender));
 
             Fight UpdatedFightingUnitsAbilityAndDamageDone = AbilitySequenceCalculator(FightingUnits);// not being placed anywhere
 
@@ -114,19 +108,22 @@ namespace TacticsElRey.Battle
 
         }
 
-        public static int AttackCalculator(Statistic s)
+        public static int AttackCalculator(Unit AttackingUnit)
         {
+
+            Console.WriteLine("Attacking Unit is: ");
             Random rand = new Random();
-            int attack = rand.Next(s.Precision, s.Accuracy);
-            Console.WriteLine("Attack: " + attack);
-            for (int i = 0; i < s.Strength; i++)
+            int attack = rand.Next(AttackingUnit.Stats.Precision, AttackingUnit.Stats.Accuracy);
+            Display.FightDisplay(AttackingUnit);
+            Console.Write("\t\t\tAttack: " + attack);
+            for (int i = 0; i < AttackingUnit.Stats.Strength; i++)
             {
                 Console.Write("-");
-                if (i == s.Precision)
+                if (i == AttackingUnit.Stats.Precision)
                 {
                     Console.Write("|");
                 }
-                if (i == s.Accuracy)
+                if (i == AttackingUnit.Stats.Accuracy)
                 {
                     Console.Write("|");
                 }
@@ -136,22 +133,24 @@ namespace TacticsElRey.Battle
                 }
             }
             Console.WriteLine();
-            return attack;
+            return attack; //
         }
 
-        public static int DefenseCalculator(Statistic s)
+        public static int DefenseCalculator(Unit DefendingUnit)
         {
+            Console.WriteLine("Defending Unit is: ");
             Random rand = new Random();
-            int Defense = rand.Next(s.Precision, s.Accuracy);
-            Console.WriteLine("Defense: " + Defense);
-            for (int i = 0; i < s.Strength; i++)
+            int Defense = rand.Next(DefendingUnit.Stats.Precision, DefendingUnit.Stats.Accuracy);
+            Display.FightDisplay(DefendingUnit);
+            Console.Write("\t\t\tDefense: " + Defense);
+            for (int i = 0; i < DefendingUnit.Stats.Strength; i++)
             {
                 Console.Write("-");
-                if (i == s.Precision)
+                if (i == DefendingUnit.Stats.Precision)
                 {
                     Console.Write("|");
                 }
-                if (i == s.Accuracy)
+                if (i == DefendingUnit.Stats.Accuracy)
                 {
                     Console.Write("|");
                 }
